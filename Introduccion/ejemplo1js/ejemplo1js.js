@@ -11,6 +11,7 @@ function cambiaTamano() {
 }
 
 function cambiaImagen() {
+    console.warn("Cambiada imagen")
     var imagen = document.getElementById("myImg");
     if (imagen.src.match("green")) {
         imagen.src =
