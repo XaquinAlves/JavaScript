@@ -24,6 +24,13 @@
         console.log('b final: ' + b);
 
     </script>
+    <!-- Hoisting, uso desaconsejado -->
+    <script>
+        x = 5; // Assign 5 to x
+        document.write(x);
+        var x; // Declare x
+        document.write("<br />" + x);
+    </script>
 </body>
 
 </html>
