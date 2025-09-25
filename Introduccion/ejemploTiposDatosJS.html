@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script>
+        // Tipos de datos
+        // Cambio de tipo de dato de unha variable
+        var x; document.write(x + " ");
+        x = 5; document.write(x + " ");
+        x = "hola"; document.write(x + "<br />");
+        var cadena = "today it's sunny";
+        document.write(cadena + "<br />");
+        // Comparacion de exponenciales
+        var x = 1e5;
+        var y = 23e-5;
+        document.write("x = " + x + "-" + " y = " + y
+            + "<br />");
+        document.write((x > y) + "<br />");
+        // Arrays
+        var coches = ["seat", "audi", "bmw"];
+        document.write(coches[2] + "<br />");
+        // Objetos
+        var personaObj = {
+            nombre: "Pepe",
+            apellido: "Perez",
+            edad: 25
+        };
+        document.write(personaObj.nombre + " " +
+            personaObj.edad + "<br />");
+        document.write(typeof (personaObj.nombre) +
+            "<br />");
+        //personaObj = null no cambia el tipo de dato
+        document.write(typeof (personaObj) + "<br />");
+
+        luis = Object.create(personaObj);
+        luis.nombre = "Luis";
+        luis.apellido = "Pérez";
+        luis.edad = 18;
+        document.write(personaObj.nombre + " " + personaObj.apellido + " " + personaObj.edad + "<br />");
+        document.write(luis.nombre + " " + luis.apellido + " " + luis.edad + "<br />")
+    </script>
+</body>
+
+</html>

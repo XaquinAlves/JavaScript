@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script>
+        document.write('<h2>' + "Entero: " + parseInt("5.25") + '</h2');
+        document.write('<br />');
+
+        document.write('<p style="font-size:40px">' + "Decimal: " +
+            parseFloat("5.25") + '</p>');
+        document.write('<br />');
+
+        document.write((new Date) + '<br />');
+
+        var fecha = (new Date()).toDateString();
+        document.write(fecha + '<br />');
+
+        var hora = (new Date()).toTimeString();
+        document.write(hora + '<br />');
+
+        var utc = (new Date()).toUTCString();
+        document.write(utc + "<br />");
+
+        var iso = (new Date()).toISOString();
+        document.write(iso + "<br />");
+    </script>
+</body>
+
+</html>
