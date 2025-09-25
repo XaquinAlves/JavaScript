@@ -37,10 +37,9 @@
         })();
         document.write(" (ejecucion de una funcion sin ser invocada)")
         // funciones anónimas con parámetros
+        // encapsulación de variables
         x = 5;
         y = 10;
-
-        // encapsulación de variables
         document.write("<br/>Encapsulación de variables: ");
         z = (function (x, y) { return x + y }(1, 2));
         document.write("<br />" + z);
@@ -55,6 +54,7 @@
         })(cadena1, cadena2);
 
         document.write("<br/><br/>")
+        
         // FUNCIONES FLECHA
         document.write("Funcións flecha:<br/>");
 
@@ -86,7 +86,7 @@
         sumar = (x, y) => x + y;
         document.write("<br />" + sumar(6,
             10));
-        
+
         multiplicar = (x, y) => {
             document.write("<br /> Resultado:");
             return x * y;
