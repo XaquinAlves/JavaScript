@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script>
+        document.write("Funcións básicas:<br />");
+
+        function toCelsius(f) {
+            return (5 / 9) * (f - 32);
+        }
+
+        document.write(toCelsius + "<br />");
+        document.write(toCelsius(60) + "<br />");
+        document.write(toCelsius() + "<br /><br />");
+
+        function duplicaVector(v) {
+            v[0] *= 2;
+            v[1] *= 2;
+        }
+
+        var v = [2, 3];
+        duplicaVector(v);
+        document.write(v[0] + " " + v[1]);
+        document.write("<br /><br />");
+
+        // FUNCIONES ANONIMAS
+        document.write("Funcións anónimas:<br/>")
+        // asingacion de una funcion anonima a una variable
+        let f = function (a, b) {
+            return a + b
+        };
+        document.write(f(3, 1) + " (asingacion de una funcion anonima a una variable)<br/>");
+
+        // ejecucion de una funcion sin ser invocada
+        (function () {
+            a = 5; document.write(a ** 2)
+        })();
+        document.write(" (ejecucion de una funcion sin ser invocada)")
+        // funciones anónimas con parámetros
+        x = 5;
+        y = 10;
+
+        // encapsulación de variables
+        document.write("<br/>Encapsulación de variables: ");
+        z = (function (x, y) { return x + y }(1, 2));
+        document.write("<br />" + z);
+        document.write("<br />" + eval(x + y));
+
+        var cadena1 = "<br />Hola";
+        var cadena2 = " y adios";
+
+        (function (str1, str2) {
+            document.write(str1 +
+                str2);
+        })(cadena1, cadena2);
+
+        document.write("<br/><br/>")
+        // FUNCIONES FLECHA
+        document.write("Funcións flecha:<br/>");
+
+        // Funcion tradicional
+        function hola() {
+            return "hola1";
+        }
+        document.write(hola() + "<br />");
+
+        // Funcion Anonima
+        var hola;
+        hola = function () {
+            return "hola2";
+        };
+        document.write(hola());
+
+        // Funciones flecha
+        hola = () => { return "hola3"; }
+        document.write("<br />" + hola());
+
+        hola = () => "hola4";
+        document.write("<br />" + hola());
+
+        var nombre = "Pepe";
+        saludar = saludo => saludo + nombre;
+        document.write("<br />" +
+            saludar("Hola"));
+
+        sumar = (x, y) => x + y;
+        document.write("<br />" + sumar(6,
+            10));
+        
+        multiplicar = (x, y) => {
+            document.write("<br /> Resultado:");
+            return x * y;
+        }
+        document.write("<br />" +
+            multiplicar(2, 6));
+    </script>
+</body>
+
+</html>
