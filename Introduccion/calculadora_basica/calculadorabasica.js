@@ -24,13 +24,13 @@ function darNumero(numero) {
         }
     }
     resfrescar();
-    console.log("Numero añadido.Num1: "+num1+" Num2: "+num2);
+    console.log("Numero añadido.Num1: " + num1 + " Num2: " + num2);
 }
 
 function darComa() {
-    if (operador == undefined && num1.indexOf('.') == -1){
+    if (operador == undefined && num1.indexOf('.') == -1) {
         num1 += '.';
-        console.log("Coma añadida a num1: "+ num1);
+        console.log("Coma añadida a num1: " + num1);
     } else if (num2.indexOf('.') == -1) {
         num2 += '.';
         console.log("Coma añadida a num2" + num2);
@@ -39,6 +39,7 @@ function darComa() {
 }
 
 function operar(valor) {
+    if (operador != undefined) { esIgual(); }
     operador = valor;
     resfrescar();
     console.log("Operador añadido: " + operador);
@@ -47,7 +48,7 @@ function operar(valor) {
 function esIgual() {
     num1 = parseFloat(num1);
     num2 = parseFloat(num2);
-    switch(operador) {
+    switch (operador) {
         case '+': num1 += num2;
             break;
         case '-': num1 -= num2;
@@ -58,6 +59,7 @@ function esIgual() {
             break;
         case '^': num1 **= num2;
     }
+    num1 = num1.toString();
     num2 = '0';
     operador = undefined;
     resfrescar();
