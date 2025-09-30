@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla Multiplicar</title>
+    <script>
+        function generar(){
+            let numero = document.getElementById("valor_numero").value;
+            console.log("El número es: " + numero);
+            for(i = 0; i <= 10; i++){
+                console.log("Multiplicamos " + numero + " por " + i + " es igual a " + (numero*i));
+                document.getElementById("tabla").innerHTML += numero + " x " + i +" = " + (numero*i) + "<br>";
+            }
+             document.getElementById("tabla").innerHTML += "<br><br>"
+        }
+    </script>
+</head>
+<body>
+    <label for="valor_numero">Número:</label>
+    <input type="text" id="valor_numero" maxlength="2" value="0">
+    <input type="button" value="Generar Tabla" id="generarTabla" onclick="generar()">
+    <p id="tabla"></p>
+</body>
+</html>
