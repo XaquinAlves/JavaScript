@@ -1,5 +1,6 @@
 function convertToRoman(num) {
-    let numArray = Array.from(String(num,Number));
+    let numero = parseInt(num);
+    let numArray = Array.from(String(numero,Number));
     console.log(numArray);
     let roman = "";
 
@@ -62,6 +63,6 @@ function convertToRoman(num) {
         numArray.shift();
         console.log(numArray);
     }
-
+    document.getElementById("resultado").innerHTML = "Resultado: " + roman;
     console.log(roman);
 }

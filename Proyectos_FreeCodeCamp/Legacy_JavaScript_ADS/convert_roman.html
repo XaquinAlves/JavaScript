@@ -6,7 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="button" value="Click" onclick="convertToRoman(98)">
+    <label for="number">Introduzca un número para convertirlo a numero romano (entre 0 y 3999):</label>
+    <input type="text" name="number" id="number">
+    <input type="button" value="Convertir" onclick="convertToRoman(number.value)">
+    <h3 id="resultado"></h3>
     <script src="convert_roman.js"></script>
 </body>
 </html>
