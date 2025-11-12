@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demostración Completa del BOM</title>
+    <style>
+        body { font-family: sans-serif; margin: 30px; }
+        h2 { border-bottom: 2px solid #ccc; padding-bottom: 5px; }
+        button { margin: 5px; padding: 10px 15px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 4px; }
+        button:hover { background-color: #0056b3; }
+        .seccion { margin-bottom: 30px; padding: 15px; border: 1px solid #eee; border-radius: 6px; }
+    </style>
+</head>
+<body>
+
+    <h1>🚀 Browser Object Model (BOM) - Ejemplos</h1>
+    <p>Abre la consola de desarrollador (F12) para ver los mensajes de `console.log`.</p>
+
+    <div class="seccion">
+        <h2>1. Objeto 📍 `location` (URL)</h2>
+        <p>URL actual: <strong id="url-actual">Cargando...</strong></p>
+        <button onclick="mostrarURL()">Mostrar URL Completa</button>
+        <button onclick="redirigirBOM()">Redirigir a Google</button>
+        <button onclick="recargarPagina()">Recargar Página</button>
+    </div>
+
+    <div class="seccion">
+        <h2>2. Ventanas de Diálogo (BOM)</h2>
+        <button onclick="usarAlert()">Mostrar Alert</button>
+        <button onclick="usarConfirm()">Mostrar Confirm</button>
+        <button onclick="usarPrompt()">Mostrar Prompt</button>
+        <p id="dialogo-resultado"></p>
+    </div>
+
+    <div class="seccion">
+        <h2>3. Objeto 📜 `history`</h2>
+        <p>Necesitas haber navegado a otra página (o usar el botón "Redirigir") para que estos botones funcionen.</p>
+        <button onclick="volverAtras()">Volver Atrás (history.back())</button>
+        <button onclick="avanzar()">Avanzar (history.forward())</button>
+    </div>
+
+    <div class="seccion">
+        <h2>4. Objeto `window` (Abrir/Cerrar Pestaña)</h2>
+        <p><strong>ATENCIÓN:</strong> El botón Cerrar solo funcionará si el navegador lo permite (según sus políticas de seguridad).</p>
+        <button onclick="abrirNuevaVentana()">Abrir Pestaña BOM</button>
+        <button onclick="cerrarVentanaAbierta()">Cerrar Pestaña BOM</button>
+        <p id="estado"></p>
+    </div>
+
+<!-- implementa el codigo aqui-->
+<script>
+        let ventanaAbierta = null;
+        const estadoElement = document.getElementById("estado");
+
+        document.getElementById("url-actual").textContent = window.location.href;
+        // =================================================================
+        // 1. Objeto location (URL)
+        // =================================================================
+        function mostrarURL() {
+            console.log("Url actual: " + location.href);
+            console.log("Ruta (pathname): " + location.pathname);
+            console.log("Query string: " + location.search);
+
+            alert("Revisa la consola para ver las URL")
+        }
+
+        function redirigirBOM() {
+            if (window.confirm("¿Seguro que quieres ir a Google?")) {
+                location.href = "https://www.google.com";
+            }
+        }
+
+        function recargarPagina() {
+            location.reload()
+        }
+        // =================================================================
+        // 2. Ventanas de Diálogo
+        // =================================================================
+        function usarAlert() {
+            window.alert("¡Esto es una alerta!");
+            document.getElementById('dialogo-resultado').textContent = "Alert: se clicó aceptar";
+        }
+
+        function usarConfirm() {
+            if (window.confirm("¿Estás seguro de confirmar?")) {
+                document.getElementById('dialogo-resultado').textContent = "Confirmado";
+            } else {
+                document.getElementById('dialogo-resultado').textContent = "Rechazado";
+            }
+        }
+
+        function usarPrompt() {
+            const nombre = window.prompt("Introduce tu nombre: ", "Anonimo");
+            if (nombre) {
+                document.getElementById('dialogo-resultado').textContent = "Nombre introducido: " + nombre;
+            } else {
+                document.getElementById('dialogo-resultado').textContent = "El usuario canceló la operación";
+            }
+        }
+
+
+
+        // =================================================================
+        // 3. Objeto history
+        // =================================================================
+        function volverAtras() {
+            history.back();
+        }
+
+        function avanzar() {
+            history.forward();
+        }
+
+
+        // =================================================================
+        // 4. Objeto window (Abrir/Cerrar)
+        // =================================================================
+        function abrirNuevaVentana() {
+            if (ventanaAbierta && !ventanaAbierta.closed) {
+                ventanaAbierta.focus()
+                estadoElement.textContent = "La ventana ya esta abierta";
+            } else {
+                ventanaAbierta = window.open('about:blank', '_blank', 'width=400px,height=200px');
+
+                if(ventanaAbierta)  {
+                    ventanaAbierta.location.href = "./hello.html";
+                    estadoElement.textContent = "Ventana abierta, prueba a cerrarla";
+                } else {
+                    estadoElement.textContent = "Error: pop-up bloqueado";
+                }
+            }
+        }
+
+        function cerrarVentanaAbierta() {
+            if (ventanaAbierta && !ventanaAbierta.closed) {
+                ventanaAbierta.close();
+
+                if (ventanaAbierta.closed) {
+                    ventanaAbierta = null;
+                    estadoElement.textContent = "Ventana cerrada";
+                } else {
+                    estadoElement.textContent = "Error: el navegador bloqueo el close()";
+                }
+            } else {
+                estadoElement.textContent = "Error: La ventana no está abierta";
+            }
+        }
+
+</script>
+</body>
+</html>
