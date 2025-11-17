@@ -78,7 +78,6 @@ form > button {
 form > h6 {
     margin-left: 20px;
     margin-top: 10px;
-    font-size: 14px;
     font-weight: bold;
 }
 
@@ -88,6 +87,34 @@ form > h6::before {
     font-weight: normal;
 }
 
-i {
+i.tooltip {
     color: #0000FF;
+
 }
+
+i.tooltip:hover::after {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    position: absolute;
+    background-color: #E8F5FD;
+    border: 1px solid #C1D7F1;
+    padding: 5px;
+    margin-left: 5px;
+    margin-right: 25px;
+    font-size: 14px;
+    z-index: 100;
+}
+
+i#tooltip_documento:hover::after {
+    content: "Este identificador se utilizará como usuario de acceso a la Sede Electrónica.";
+}
+
+i#tooltip_soporte:hover::after {
+    content: "Si selecciona como Tipo de Documento DNI deberá informar el IDESP, si por el contrario selecciona NIE deberá informar el IXESP para que el Sistema pueda verificar sus Datos de Identidad con la Dirección General de la Policía. Ver ayuda identidad. Le recordamos en tal caso, que la información introducida en los campos Nombre, Primor apellido y Segundo apellido (en caso de estar informado) deben ser EXACTAMENTE IGUALES a los existentes en su documento de identificación. ";
+}
+
+i#tooltip_contact:hover::after {
+    content: "El correo electrónico y el teléfono móvil indicados se utilizarán para recibir comunicaciones relativas a los trámites implementados en esta sede electrónica.";
+}
+
