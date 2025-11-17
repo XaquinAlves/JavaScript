@@ -55,7 +55,8 @@ div {
 fieldset {
     margin: 20px;
     padding: 10px;
-    border: 2px solid #000000;
+    border: 1px solid #C0C0C0;
+    border-top: 2px solid #000080;
 }
 
 div.required > label::before {
@@ -63,3 +64,30 @@ div.required > label::before {
     color: red;
 }
 
+form > button {
+    padding: 10px 20px;
+    background-color: #000080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 100%;
+    transform: translateX(-150%);
+}
+
+form > h6 {
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+form > h6::before {
+    content: "* ";
+    color: red;
+    font-weight: normal;
+}
+
+i {
+    color: #0000FF;
+}
