@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/c5bf500693.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <form action="" method="post" id="formUsuario" onsubmit="return validar();">
+    <form action="" method="post" id="formUsuario" >
         <h6>Datos requeridos</h6>
         <fieldset>
             <legend>DATOS DEL USUARIO</legend>
@@ -34,12 +34,11 @@
 
             <div class="required">
                 <label for="tipo_documento">Tipo documento:</label>
-                <input list="documentos" name="tipo_documento" id="tipo_documento" required>
-                <datalist id="documentos">
-                    <option value="DNI"></option>
-                    <option value="NIE"></option>
-                    <option value="Otro"></option>
-                </datalist>
+                <select list="documentos" name="tipo_documento" id="tipo_documento" required>
+                    <option value="DNI">DNI</option>
+                    <option value="NIE">NIE</option>
+                    <option value="Otro">Otro</option>
+                </select>
             </div>
 
             <div class="required">
@@ -78,6 +77,7 @@
                 <label for="input_telef">Teléfono móvil:</label>
                 <input type="tel" name="input_telef" id="input_telef" required>
                 <i class="fa-solid fa-circle-info tooltip" id="tooltip_contact"></i>
+                <span class="error-message" id="errorTel">Formato de teléfono no válido.</span>
             </div>
         </fieldset>
         <button type="submit" class="enviar" id="bttn-submit">Aceptar</button>

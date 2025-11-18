@@ -82,7 +82,6 @@ form > button.enviar {
     transform: translateX(-70%);
 }
 
-
 form > h6 {
     margin-left: 20px;
     margin-top: 10px;
@@ -93,6 +92,19 @@ form > h6::before {
     content: "* ";
     color: red;
     font-weight: normal;
+}
+
+form  span.error-message {
+    visibility: hidden;
+    position: absolute;
+    padding: 5px;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: 1px solid silver;
+}
+
+span.error-message::before{
+    content: "⚠️";
 }
 
 i.tooltip {
