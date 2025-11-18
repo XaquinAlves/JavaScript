@@ -47,9 +47,16 @@ table {
 	border-spacing: 0;
 }
 /* Custom styles */
-
 div {
     margin: 10px;
+}
+
+/* Estilos del formulario */
+form {
+    width: 70vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 20px;
 }
 
 fieldset {
@@ -64,16 +71,17 @@ div.required > label::before {
     color: red;
 }
 
-form > button {
+form > button.enviar {
     padding: 10px 20px;
     background-color: #000080;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 100%;
-    transform: translateX(-150%);
+    margin-left: 95%;
+    transform: translateX(-70%);
 }
+
 
 form > h6 {
     margin-left: 20px;
@@ -117,4 +125,57 @@ i#tooltip_soporte:hover::after {
 i#tooltip_contact:hover::after {
     content: "El correo electrónico y el teléfono móvil indicados se utilizarán para recibir comunicaciones relativas a los trámites implementados en esta sede electrónica.";
 }
+
+/* Estilos del modal */
+
+#consentimiento {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 15px;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.1);
+    hyphens: auto;
+    overflow: auto;
+    background-color: white;
+    border: 2px solid grey;
+}
+
+#consentimiento pre {
+    margin: 20px auto;
+}
+
+#consentimiento button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#consentimiento button.acept {
+    background-color: #000080;
+    color: white;
+    margin-left: 50px;
+}
+
+#consentimiento button.reject {
+    background-color: #FF0000;
+    color: white;
+}
+
+.modal {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.modal.is-visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.35s ease-in;
+}
+
+
+
 

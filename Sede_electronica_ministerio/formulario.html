@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/c5bf500693.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="" method="post" id="formUsuario" onsubmit="return validar();">
         <h6>Datos requeridos</h6>
         <fieldset>
             <legend>DATOS DEL USUARIO</legend>
@@ -48,9 +48,9 @@
                 <i class="fa-solid fa-circle-info tooltip" id="tooltip_documento"></i>
             </div>
 
-            <div>
+            <div class="required">
                 <label for="input_numsoporte">Número de SOPORTE/IDESP/IXESP:</label>
-                <input type="text" name="input_numsoporte" id="input_numsoporte">
+                <input type="text" name="input_numsoporte" id="input_numsoporte" required>
                 <i class="fa-solid fa-circle-info tooltip" id="tooltip_soporte"></i>
             </div>
 
@@ -80,7 +80,51 @@
                 <i class="fa-solid fa-circle-info tooltip" id="tooltip_contact"></i>
             </div>
         </fieldset>
-        <button type="submit">Aceptar</button>
+        <button type="submit" class="enviar" id="bttn-submit">Aceptar</button>
+        <div class="modal" id="consentimiento">
+            <pre>
+                Datos del usuario:
+
+                Este identificador se utilizará como usuario de acceso a la Sede electrónica.
+
+                Si selecciona como Tipo de Documento DNI deberá informar el IDESP, si por el contrario selecciona NIE deberá informar el IXESP para que el Sistema pueda verificar sus
+                Datos de Identidad con la Dirección General de la Policía.
+                Ver ayuda identidad.
+                Le recordamos en tal caso, que la información introducida en los campos Nombre, Primor apellido y Segundo apellido (en caso de estar informado) deben ser EXACTAMENTE IGUALES
+                a los existentes en su documento de identificación.
+
+                El correo electrónico y el teléfono móvil indicados se utilizarán para recibir comunicaciones relativas a los trámites implementados en esta sede electrónica.
+
+                Declaraciones:
+
+                *Declaro que los datos que figuran en la solicitud de registro son ciertos, asumiendo en caso contrario, las responsabilidades que pudieran derivarse de su inexactitud y
+                autorizando al Ministerio de Educación y Formación Profesional la consulta de los mismos en el Sistema de Verificación de Datos de Identidad de la
+                Dirección General de la Policía.
+
+                *Doy mi consentimiento
+
+                Información importante
+
+                Al firmar esta petición queda establecido que usted presta su consentimiento expreso al tratamiento de sus datos personales. Lea, antes de firmar, la información básica.
+
+                Información básica
+
+                Los datos personales recogidos serán incorporados en el registro de actividades de tratamiento del Ministerio de Educación y Formación Profesional denominado SEDE ELECTRÓNICA
+                en cumplimiento del Reglamento General de Protección de Datos:
+
+                - Responsable del tratamiento: Subsecretaría de Educación y Formación Profesional
+                - Finalidad: Registro de los ciudadanos en la sede electrónica del Ministerio, para realizar trámites electrónicos de los que el ministerio es competente,
+                    comprendiendo todo el ciclo del trámite administrativo
+                - Legitimación: Consentimiento del interesado y orden EDU/947/2010, de 13 de abril por la que se crea y regula el registro electrónico del Ministerio de Educación y
+                - Formación Profesional
+                - Destinatarios: No están previstos
+                - Derechos: Acceso, rectificación, limitación del tratamiento, portabilidad de los datos, oposición y a no ser objeto de decisiones individualizadas.
+
+                Declaro que he leído la INFORMACIÓN BÁSICA referente a los derechos a ejercitar. Puede consultar la información adicional y detallada sobre protección de datos
+                en el enlace: <a href="https://sede.educacion.gob.es/registro-electronico/proteccion-datos">https://sede.educacion.gob.es/registro-electronico/proteccion-datos</a></pre>
+                <button type="button" onclick="aceptarConsentimiento()" class="acept">Aceptar</button>
+                <button type="button" onclick="rechazarConsentimiento()" class="reject">Rechazar</button>
+        </div>
     </form>
 </body>
 <script src="./scripts.js"></script>
