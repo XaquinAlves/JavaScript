@@ -1,22 +1,28 @@
 const form = document.getElementById("formUsuario");
-const telefonoInput = document.getElementById("input_telef");
 
 // Expresión regular para validar el formato del teléfono móvil español
 const telefonoPattern = /^(?:\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}$/;
+const dniPattern = /^\d{8}[A-HJ-NP-TV-Z]$/i;
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
+    let check = true;
 
-    if (!telefonoPattern.test(telefonoInput.value)) {
+    if (!dniPattern.test(document.getElementById('input_documento').value)){
+        document.getElementById("errorDni").style = "visibility: visible";
+        check = false;
+    } else {
+        document.getElementById("errorDni").style = "visibility: hidden";
+    }
+
+    if (!telefonoPattern.test(document.getElementById("input_telef").value)) {
         document.getElementById("errorTel").style = "visibility: visible";
-        return;
+        check = false;
     } else {
         document.getElementById("errorTel").style = "visibility: hidden";
     }
 
-    if (document.getElementById("consentimiento").classList.contains("is-visible")) {
-        document.getElementById("consentimiento").focus();
-    } else {
+    if (check) {
         document.getElementById("consentimiento").classList.add("is-visible");
     }
 });
