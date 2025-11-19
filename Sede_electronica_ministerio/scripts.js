@@ -1,7 +1,7 @@
 const form = document.getElementById("formUsuario");
 
 // Expresión regular para validar el formato del teléfono móvil español
-const telefonoPattern = /^(?:\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}$/;
+const telefonoPattern = /^(\+34|0034|34)?[ -]*(6|7|8|9)[ -]*([0-9][ -]*){8}$/;
 const dniPattern = /^\d{8}[A-HJ-NP-TV-Z]$/i;
 const emailPattern = /^[a-z]+\w*@[a-z0-9]+\.[a-z]+(\.[a-z]*)*$/iu;
 
@@ -31,7 +31,7 @@ form.addEventListener("submit", function(event) {
     }
 
     //Comprobamos los correos
-    if (!emailPattern.test(document.getElementById('input_correo').value)){
+    if (!emailPattern.test(document.getElementById('input_correo').value)){//Si no cumple el patrón
         document.getElementById("errorEmail").innerHTML = "El correo tiene formato erróneo."
         document.getElementById('errorEmail').style = "visibility: visible";
         check = false;
