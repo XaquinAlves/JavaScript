@@ -4,8 +4,9 @@ const form = document.getElementById("formUsuario");
 const telefonoPattern = /^(?:\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}$/;
 const dniPattern = /^\d{8}[A-HJ-NP-TV-Z]$/i;
 
+//Event listener para checkear el formulario
 form.addEventListener("submit", function(event) {
-    event.preventDefault();
+    event.preventDefault(); //Detiene el envío del formulario
     let check = true;
 
     //Comprobamos el DNI
@@ -54,11 +55,12 @@ form.addEventListener("submit", function(event) {
     }
 });
 
+//Para el boton de aceptar consentimiento
 function aceptarConsentimiento() {
     document.getElementById("consentimiento").classList.remove("is-visible");
     form.submit();
 }
-
+//Para el boton de rechazar consentimiento
 function rechazarConsentimiento() {
     alert("Debe aceptar la información básica para continuar con el registro.");
     document.getElementById("consentimiento").classList.remove("is-visible");
