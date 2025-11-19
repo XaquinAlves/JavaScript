@@ -8,20 +8,47 @@ form.addEventListener("submit", function(event) {
     event.preventDefault();
     let check = true;
 
-    if (!dniPattern.test(document.getElementById('input_documento').value)){
+    //Comprobamos el DNI
+    if (!dniPattern.test(document.getElementById('input_documento').value)){//Si no cumple el patron, mostramos el error
+        document.getElementById("errorDni").innerHTML = "Número de documento no válido."
         document.getElementById("errorDni").style = "visibility: visible";
         check = false;
-    } else {
+    } else { //Si es correcto
+        document.getElementById("errorDni").innerHTML = ""
         document.getElementById("errorDni").style = "visibility: hidden";
     }
 
-    if (!telefonoPattern.test(document.getElementById("input_telef").value)) {
-        document.getElementById("errorTel").style = "visibility: visible";
+    //Comprobamos las contraseñas
+    if (document.getElementById('input_pass').value !== document.getElementById('input_pass_repeat').value){//Si no coinciden, mostramos el error
+        document.getElementById("errorPass").innerHTML = "Las contraseñas no coinciden."
+        document.getElementById('errorPass').style = "visibility: visible";
+        check = false;
+    } else { //Si coinciden
+        document.getElementById("errorPass").innerHTML = ""
+        document.getElementById('errorPass').style = "visibility: hidden";
+    }
+
+    //Comprobamos los correos
+    if (document.getElementById('input_correo').value !== document.getElementById('input_correo_repeat').value){//Si no coinciden, mostramos el error
+        document.getElementById("errorEmail").innerHTML = "Los correos no coinciden."
+        document.getElementById('errorEmail').style = "visibility: visible";
         check = false;
     } else {
+        document.getElementById("errorEmail").innerHTML = ""
+        document.getElementById('errorEmail').style = "visibility: hidden";
+    }
+
+    //Comprobamos el telefono
+    if (!telefonoPattern.test(document.getElementById("input_telef").value)) { //Si no cumple el patron, mostramos el error
+        document.getElementById("errorTel").innerHTML = "Formato de teléfono no válido."
+        document.getElementById("errorTel").style = "visibility: visible";
+        check = false;
+    } else { //Si lo cumple
+        document.getElementById("errorTel").innerHTML = ""
         document.getElementById("errorTel").style = "visibility: hidden";
     }
 
+    //Si pasa todas las comprobaciones, mostramos el consentimiento
     if (check) {
         document.getElementById("consentimiento").classList.add("is-visible");
     }

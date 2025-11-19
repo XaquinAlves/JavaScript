@@ -45,7 +45,7 @@
                 <label for="input_documento">Nº documento:</label>
                 <input type="text" name="input_documento" id="input_documento" required>
                 <i class="fa-solid fa-circle-info tooltip" id="tooltip_documento"></i>
-                <span class="error-message" id="errorDni">Número de documento no válido.</span>
+                <span class="error-message" id="errorDni"></span>
             </div>
 
             <div class="required">
@@ -62,6 +62,7 @@
             <div class="required">
                 <label for="input_pass_repeat">Repita contraseña:</label>
                 <input type="password" name="input_pass_repeat" id="input_pass_repeat" required>
+                <span class="error-message" id="errorPass"></span>
             </div>
 
             <div class="required">
@@ -72,13 +73,14 @@
             <div class="required">
                 <label for="input_correo_repeat">Repita correo electrónico:</label>
                 <input type="email" name="input_correo_repeat" id="input_correo_repeat" required>
+                <span class="error-message" id="errorEmail"></span>
             </div>
 
             <div class="required">
                 <label for="input_telef">Teléfono móvil:</label>
                 <input type="tel" name="input_telef" id="input_telef" required>
                 <i class="fa-solid fa-circle-info tooltip" id="tooltip_contact"></i>
-                <span class="error-message" id="errorTel">Formato de teléfono no válido.</span>
+                <span class="error-message" id="errorTel"></span>
             </div>
         </fieldset>
         <button type="submit" class="enviar" id="bttn-submit">Aceptar</button>
