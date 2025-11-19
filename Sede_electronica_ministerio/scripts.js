@@ -3,6 +3,7 @@ const form = document.getElementById("formUsuario");
 // Expresión regular para validar el formato del teléfono móvil español
 const telefonoPattern = /^(?:\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}$/;
 const dniPattern = /^\d{8}[A-HJ-NP-TV-Z]$/i;
+const emailPattern = /^[a-z]+\w*@[a-z0-9]+\.[a-z]+(\.[a-z]*)*$/iu;
 
 //Event listener para checkear el formulario
 form.addEventListener("submit", function(event) {
@@ -30,7 +31,11 @@ form.addEventListener("submit", function(event) {
     }
 
     //Comprobamos los correos
-    if (document.getElementById('input_correo').value !== document.getElementById('input_correo_repeat').value){//Si no coinciden, mostramos el error
+    if (!emailPattern.test(document.getElementById('input_correo').value)){
+        document.getElementById("errorEmail").innerHTML = "El correo tiene formato erróneo."
+        document.getElementById('errorEmail').style = "visibility: visible";
+        check = false;
+    } else if (document.getElementById('input_correo').value !== document.getElementById('input_correo_repeat').value){//Si no coinciden, mostramos el error
         document.getElementById("errorEmail").innerHTML = "Los correos no coinciden."
         document.getElementById('errorEmail').style = "visibility: visible";
         check = false;
