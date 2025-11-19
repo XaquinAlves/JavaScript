@@ -10,6 +10,9 @@ form.addEventListener("submit", function(event) {
     event.preventDefault(); //Detiene el envío del formulario
     let check = true;
 
+    //Comprobamos la fecha de nacimiento
+    let edad = Math.abs(new Date() - new Date(document.getElementById('input_fecnac').value));
+
     //Comprobamos el DNI
     if (!dniPattern.test(document.getElementById('input_documento').value)){//Si no cumple el patron, mostramos el error
         document.getElementById("errorDni").innerHTML = "Número de documento no válido."
@@ -21,6 +24,12 @@ form.addEventListener("submit", function(event) {
     }
 
     //Comprobamos las contraseñas
+    let inputPass = Sdocument.getElementById('input_pass').value.length;
+    if (form.elements['input_pass']) {
+        document.getElementById("errorPass").innerHTML = "Las contraseña debe tener al menos 12 caracteres."
+        document.getElementById('errorPass').style = "visibility: visible";
+        check = false;
+    }
     if (document.getElementById('input_pass').value !== document.getElementById('input_pass_repeat').value){//Si no coinciden, mostramos el error
         document.getElementById("errorPass").innerHTML = "Las contraseñas no coinciden."
         document.getElementById('errorPass').style = "visibility: visible";
