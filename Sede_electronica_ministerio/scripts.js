@@ -24,12 +24,6 @@ form.addEventListener("submit", function(event) {
     }
 
     //Comprobamos las contraseñas
-    let inputPass = Sdocument.getElementById('input_pass').value.length;
-    if (form.elements['input_pass']) {
-        document.getElementById("errorPass").innerHTML = "Las contraseña debe tener al menos 12 caracteres."
-        document.getElementById('errorPass').style = "visibility: visible";
-        check = false;
-    }
     if (document.getElementById('input_pass').value !== document.getElementById('input_pass_repeat').value){//Si no coinciden, mostramos el error
         document.getElementById("errorPass").innerHTML = "Las contraseñas no coinciden."
         document.getElementById('errorPass').style = "visibility: visible";
