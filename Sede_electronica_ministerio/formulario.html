@@ -30,7 +30,6 @@
             <div class="required">
                 <label for="input_fecnac">Fecha de nacimiento:</label>
                 <input type="date" name="input_fecnac" id="input_fecnac" required>
-                <span class="error-message" id="errorFecnac"></span>
             </div>
 
             <div class="required">
@@ -84,7 +83,7 @@
                 <span class="error-message" id="errorTel"></span>
             </div>
         </fieldset>
-        <button type="submit" class="enviar" id="bttn-submit">Aceptar</button>
+        <button type="submit" class="enviar" id="bttn-submit" onclick="validar()">Aceptar</button>
         <div class="modal" id="consentimiento">
             <pre>
                 Datos del usuario:

@@ -1,34 +1,75 @@
 const form = document.getElementById("formUsuario");
 
-//Event listener para checkear el formulario
-form.addEventListener("submit", function (event) {
-    event.preventDefault(); //Detiene el envío del formulario
+function validar() {
     let check = [];
 
+    validarNombre(document.getElementById("input_nombre"));
+    validarPrimerApellido(document.getElementById("input_apellido1"));
+
     //Comprobamos la fecha de nacimiento
-    check.push(validarFechaNacimiento(
-        document.getElementById("input_fecnac").value
-    ));
+    validarFechaNacimiento(document.getElementById("input_fecnac"));
     //Comprobamos el tipo de documento
-    check.push(validarDocumento(
-        document.getElementById("tipo_documento").value,
-        document.getElementById("input_documento").value
-    ));
+    check.push(
+        validarDocumento(
+            document.getElementById("tipo_documento"),
+            document.getElementById("input_documento")
+        )
+    );
     //Comprobamos las contraseñas
-    check.push(validarPass(
-        document.getElementById("input_pass").value,
-        document.getElementById("input_pass_repeat").value
-    ));
+    check.push(
+        validarPass(
+            document.getElementById("input_pass").value,
+            document.getElementById("input_pass_repeat").value
+        )
+    );
     //Comprobamos los correos
-    check.push(validarCorreo(
-        document.getElementById("input_correo").value,
-        document.getElementById("input_correo_repeat").value
-    ));
+    check.push(
+        validarCorreo(
+            document.getElementById("input_correo").value,
+            document.getElementById("input_correo_repeat").value
+        )
+    );
     //Comprobamos el telefono
     check.push(validarTelef(document.getElementById("input_telef").value));
 
     //Si pasa todas las comprobaciones, mostramos el consentimiento
     if (!check.includes(false)) {
+        document.getElementById("consentimiento").classList.add("is-visible");
+    }
+}
+
+//Event listener para checkear el formulario
+form.addEventListener("submit", function (event) {
+    event.preventDefault(); //Detiene el envío del formulario
+    let check = [];
+
+    validarNombre(document.getElementById("input_nombre"));
+
+    //Comprobamos la fecha de nacimiento
+    validarFechaNacimiento(document.getElementById("input_fecnac"));
+    //Comprobamos el tipo de documento
+    validarDocumento(
+        document.getElementById("tipo_documento"),
+        document.getElementById("input_documento")
+    );
+
+    //Comprobamos las contraseñas
+    validarPass(
+        document.getElementById("input_pass"),
+        document.getElementById("input_pass_repeat")
+    );
+    //Comprobamos los correos
+    check.push(
+        validarCorreo(
+            document.getElementById("input_correo").value,
+            document.getElementById("input_correo_repeat").value
+        )
+    );
+    //Comprobamos el telefono
+    check.push(validarTelef(document.getElementById("input_telef").value));
+
+    //Si pasa todas las comprobaciones, mostramos el consentimiento
+    if (form.checkValidity()) {
         document.getElementById("consentimiento").classList.add("is-visible");
     }
 });
@@ -44,82 +85,91 @@ function rechazarConsentimiento() {
     document.getElementById("consentimiento").classList.remove("is-visible");
 }
 
-function validarFechaNacimiento(fecha) {
-    const anoMilisegundos = 31557600000;
-    //Calculamos la edad en años con la fecha de nacimiento dada
-    let edad = Math.abs(new Date() - new Date(fecha)) / anoMilisegundos;
-
-    if (edad < 18) {
-        //Si es menor de edad
-        document.getElementById("errorFecnac").innerHTML =
-            "Debe ser mayor de edad";
-        document.getElementById("errorFecnac").style = "visibility: visible";
-        return false;
+function validarNombre(nombre) {
+    if (nombre.validity.valueMissing) {
+        nombre.setCustomValidity("El nombre es obligatorio");
     } else {
-        //Si es mayor de edad
-        document.getElementById("errorFecnac").innerHTML = "";
-        document.getElementById("errorFecnac").style = "visibility: hidden";
-        return true;
+        nombre.setCustomValidity("");
     }
 }
 
-function validarDocumento(tipoDocumento, documento) {
+function validarPrimerApellido(apellido) {
+    if (apellido.validity.valueMissing) {
+        apellido.setCustomValidity("El primer apellido es obligatorio");
+    } else {
+        apellido.setCustomValidity("");
+    }
+}
+
+function validarFechaNacimiento(fecha) {
+    const anoMilisegundos = 31557600000;
+    //Calculamos la edad en años con la fecha de nacimiento dada
+    let edad = Math.abs(new Date() - new Date(fecha.value)) / anoMilisegundos;
+    if (edad < 18) {
+        fecha.setCustomValidity("Debe ser mayor de edad");
+    } else {
+        //Si es mayor de edad
+        fecha.setCustomValidity("");
+    }
+}
+
+function validarDocumento(tipoDocumento, numDocumento) {
     const dniPattern = /^\d{8}[A-HJ-NP-TV-Z]$/i;
     const niePattern = /^(X|Y|Z)\d{7}[A-HJ-NP-TV-Z]$/;
 
-    if (tipoDocumento == "DNI") {
+    if (tipoDocumento.value == "DNI") {
         //Si es un DNI
         //Comprobamos el DNI
-        if (!dniPattern.test(documento)) {
+        if (!dniPattern.test(numDocumento.value)) {
             //Si no cumple el patron, mostramos el error
             document.getElementById("errorDni").innerHTML =
                 "Introduzca 8 numeros y una letra al final. Si su DNI tiene menos de 9 caracteres, complete con 0 a la izquierda";
             document.getElementById("errorDni").style = "visibility: visible";
-            return false;
+
+            numDocumento.setCustomValidity("Formato inválido");
         } else {
             //Si es correcto
             document.getElementById("errorDni").innerHTML = "";
             document.getElementById("errorDni").style = "visibility: hidden";
-            return true;
+            numDocumento.setCustomValidity("");
         }
-    } else if (tipoDocumento == "NIE") { //Si es un NIE
-        if (!niePattern.test(documento)) {
+    } else if (tipoDocumento.value == "NIE") {
+        //Si es un NIE
+        if (!niePattern.test(numDocumento.value)) {
             //Si no cumple el patron, mostramos el error
             document.getElementById("errorDni").innerHTML =
-                "Formato de documento no inválido. Introduzca 9 caracteres, X,Y o Z seguido de 7 numeros y una letra final.";
+                "Introduzca 9 caracteres, X,Y o Z seguido de 7 numeros y una letra final.";
             document.getElementById("errorDni").style = "visibility: visible";
-            return false;
+            numDocumento.setCustomValidity("Formato inválido");
         } else {
             //Si es correcto
             document.getElementById("errorDni").innerHTML = "";
             document.getElementById("errorDni").style = "visibility: hidden";
-            return true;
+            numDocumento.setCustomValidity("");
         }
-    } else {
-        return true;
     }
 }
 
 function validarPass(pass, repeat) {
     const passPattern = /[!@#%\^&*]{2,}/;
 
-    if (!passPattern.test(pass)) {
+    if (!passPattern.test(pass.value)) {
         //Si no contiene al menos 2 caracteres especiales, mostramos el error
         document.getElementById("errorPass").innerHTML =
             "Las contraseña debe contener al menos 2 caracteres especiales (!@#%^&*).";
         document.getElementById("errorPass").style = "visibility: visible";
-        return false;
-    } else if (pass !== repeat) {
+        pass.setCustomValidity("Contraseña poco segura")
+    } else if (pass.value !== repeat.value) {
         //Si no coinciden, mostramos el error
-        document.getElementById("errorPass").innerHTML =
-            "Las contraseñas no coinciden.";
-        document.getElementById("errorPass").style = "visibility: visible";
-        return false;
+        document.getElementById("errorPass").innerHTML = "";
+        document.getElementById("errorPass").style = "visibility: hidden";
+        repeat.setCustomValidity("Las contraseñas no coinciden")
     } else {
         //Si coinciden
         document.getElementById("errorPass").innerHTML = "";
         document.getElementById("errorPass").style = "visibility: hidden";
-        return true;
+        pass.setCustomValidity("")
+        repeat.setCustomValidity("")
     }
 }
 
