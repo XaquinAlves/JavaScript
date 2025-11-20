@@ -123,7 +123,7 @@ function validarNumSoporte(numSoporte) {
 }
 
 function validarPass(pass, repeat) {
-    const passPattern = /[!@#%\^&*]{2,}/;
+    const passPattern = /.*[!@#%\^&*].*[!@#%\^&*].*/;
 
     if (pass.validity.valueMissing) {
         pass.setCustomValidity("La contraseña es obligatoria");
@@ -136,11 +136,12 @@ function validarPass(pass, repeat) {
         document.getElementById("errorPass").innerHTML =
             "La contraseña debe contener al menos 2 caracteres especiales (!@#%^&*).";
         document.getElementById("errorPass").style = "visibility: visible";
-        pass.setCustomValidity("Contraseña poco segura");
+        pass.setCustomValidity("Contraseña poco segura")
     } else if (pass.value !== repeat.value) {
         //Si no coinciden, mostramos el error
         document.getElementById("errorPass").innerHTML = "";
         document.getElementById("errorPass").style = "visibility: hidden";
+        pass.setCustomValidity("")
         repeat.setCustomValidity("Las contraseñas no coinciden");
     } else {
         //Si coinciden
@@ -155,13 +156,13 @@ function validarCorreo(correo, repeat) {
     const emailPattern = /^[a-z]+\w*@[a-z0-9]+\.[a-z]+(\.[a-z]*)*$/iu;
 
     if (correo.validity.valueMissing) {
-        correo.setCustomValidity("El correo es obligatorio")
-    }
-    if (!emailPattern.test(correo.value)) {
+        correo.setCustomValidity("El correo es obligatorio");
+    } else if (!emailPattern.test(correo.value)) {
         //Si no cumple el patrón, mostramos el error
-        correo.setCustomValidity("El correo tiene un formato erróneo.")
+        correo.setCustomValidity("El correo tiene un formato erróneo.");
     } else if (correo.value !== repeat.value) {
         //Si no coinciden, mostramos el error
+        correo.setCustomValidity("");
         repeat.setCustomValidity("Los correos no coinciden.");
     } else {
         correo.setCustomValidity("");
@@ -180,6 +181,6 @@ function validarTelef(telef) {
         telef.setCustomValidity("Formato de teléfono inválido");
     } else {
         //Si lo cumple
-        telef.setCustomValidity("El teléfono es obligatorio");
+        telef.setCustomValidity("");
     }
 }
