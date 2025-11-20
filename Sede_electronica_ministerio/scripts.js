@@ -46,6 +46,7 @@ function rechazarConsentimiento() {
 
 function validarFechaNacimiento(fecha) {
     const anoMilisegundos = 31557600000;
+    //Calculamos la edad en años con la fecha de nacimiento dada
     let edad = Math.abs(new Date() - new Date(fecha)) / anoMilisegundos;
 
     if (edad < 18) {
@@ -81,7 +82,7 @@ function validarDocumento(tipoDocumento, documento) {
             document.getElementById("errorDni").style = "visibility: hidden";
             return true;
         }
-    } else if (tipoDocumento == "NIE") {
+    } else if (tipoDocumento == "NIE") { //Si es un NIE
         if (!niePattern.test(documento)) {
             //Si no cumple el patron, mostramos el error
             document.getElementById("errorDni").innerHTML =
@@ -103,6 +104,7 @@ function validarPass(pass, repeat) {
     const passPattern = /[!@#%\^&*]{2,}/;
 
     if (!passPattern.test(pass)) {
+        //Si no contiene al menos 2 caracteres especiales, mostramos el error
         document.getElementById("errorPass").innerHTML =
             "Las contraseña debe contener al menos 2 caracteres especiales (!@#%^&*).";
         document.getElementById("errorPass").style = "visibility: visible";
@@ -125,7 +127,7 @@ function validarCorreo(correo, repeat) {
     const emailPattern = /^[a-z]+\w*@[a-z0-9]+\.[a-z]+(\.[a-z]*)*$/iu;
 
     if (!emailPattern.test(correo)) {
-        //Si no cumple el patrón
+        //Si no cumple el patrón, mostramos el error
         document.getElementById("errorEmail").innerHTML =
             "El correo tiene formato erróneo.";
         document.getElementById("errorEmail").style = "visibility: visible";
