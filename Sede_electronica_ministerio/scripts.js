@@ -4,6 +4,8 @@ const form = document.getElementById("formUsuario");
 const telefonoPattern = /^(\+34|0034|34)?[ -]*(6|7|8|9)[ -]*([0-9][ -]*){8}$/;
 const dniPattern = /^\d{8}[A-HJ-NP-TV-Z]$/i;
 const emailPattern = /^[a-z]+\w*@[a-z0-9]+\.[a-z]+(\.[a-z]*)*$/iu;
+const passPattern = /[!@#%\^&*]{2,}/;
+const anoMilisegundos = 31557600000;
 
 //Event listener para checkear el formulario
 form.addEventListener("submit", function(event) {
@@ -11,8 +13,16 @@ form.addEventListener("submit", function(event) {
     let check = true;
 
     //Comprobamos la fecha de nacimiento
-    let edad = Math.abs(new Date() - new Date(document.getElementById('input_fecnac').value));
-
+    let edad = (Math.abs(new Date() - new Date(document.getElementById('input_fecnac').value))) / anoMilisegundos;
+    if (edad < 18) { //Si es menor de edad
+        document.getElementById("errorFecnac").innerHTML = "Debe ser mayor de edad"
+        document.getElementById("errorFecnac").style = "visibility: visible";
+        check = false;
+    } else { //Si es mayor de edad
+        document.getElementById("errorFecnac").innerHTML = ""
+        document.getElementById("errorFecnac").style = "visibility: hidden";
+    }
+    
     //Comprobamos el DNI
     if (!dniPattern.test(document.getElementById('input_documento').value)){//Si no cumple el patron, mostramos el error
         document.getElementById("errorDni").innerHTML = "Número de documento no válido."
@@ -24,7 +34,11 @@ form.addEventListener("submit", function(event) {
     }
 
     //Comprobamos las contraseñas
-    if (document.getElementById('input_pass').value !== document.getElementById('input_pass_repeat').value){//Si no coinciden, mostramos el error
+    if (!passPattern.test(document.getElementById('input_pass').value)){
+        document.getElementById("errorPass").innerHTML = "Las contraseña debe contener al menos 2 caracteres especiales (!@#%^&*)."
+        document.getElementById('errorPass').style = "visibility: visible";
+        check = false;
+    } else if (document.getElementById('input_pass').value !== document.getElementById('input_pass_repeat').value){//Si no coinciden, mostramos el error
         document.getElementById("errorPass").innerHTML = "Las contraseñas no coinciden."
         document.getElementById('errorPass').style = "visibility: visible";
         check = false;
