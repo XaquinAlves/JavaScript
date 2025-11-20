@@ -171,8 +171,7 @@ function validarCorreo(correo, repeat) {
 }
 
 function validarTelef(telef) {
-    const telefonoPattern =
-        /^(\+34|0034|34)?[ -]*(6|7|8|9)[ -]*([0-9][ -]*){8}$/;
+    const telefonoPattern = /^(\+34|0034|34)?[ -]*(6|7|8|9)[ -]*([0-9][ -]*){8}$/;
 
     if (telef.validation.valueMissing) {
         telef.setCustomValidity("El teléfono es obligatorio");
