@@ -1,5 +1,10 @@
 const form = document.getElementById("formUsuario");
 
+form.addEventListener("sumbit", function (event) {
+    event.preventDefault();
+    document.getElementById("consentimiento").classList.add("is-visible");
+});
+
 function validar() {
     validarNombre(document.getElementById("input_nombre"));
     validarPrimerApellido(document.getElementById("input_apellido1"));
@@ -29,7 +34,7 @@ function validar() {
 
     //Si pasa todas las comprobaciones, mostramos el consentimiento
     if (form.checkValidity()) {
-        document.getElementById("consentimiento").classList.add("is-visible");
+
     }
 }
 
