@@ -169,13 +169,10 @@ i#tooltip_contact:hover::after {
 #consentimiento button.acept {
     background-color: #000080;
     color: white;
-    margin-left: 50px;
+    margin-right: 100px;
+    margin-bottom: 25px;
 }
 
-#consentimiento button.reject {
-    background-color: #FF0000;
-    color: white;
-}
 
 .modal {
     visibility: hidden;
@@ -189,8 +186,7 @@ i#tooltip_contact:hover::after {
 }
 
 .modal select {
-    margin: 25px;
-    float: left;
+    margin-left: 70%;
 }
 
 

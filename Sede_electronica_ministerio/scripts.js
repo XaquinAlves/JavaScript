@@ -36,9 +36,9 @@ function validar() {
 
 //Para el boton de aceptar consentimiento
 function aceptarConsentimiento() {
-    document.getElementById("consentimiento").classList.remove("is-visible");
     if(document.getElementById('consent').value == 1) {
         document.getElementById("conset").setCustomValidity("");
+        document.getElementById('consentimiento').classList.remove("is-visible");
         form.submit();
     } else {
         alert(
