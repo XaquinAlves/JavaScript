@@ -36,14 +36,17 @@ function validar() {
 
 //Para el boton de aceptar consentimiento
 function aceptarConsentimiento() {
-    if(document.getElementById('consent').value == 1) {
-        document.getElementById("conset").setCustomValidity("");
-        document.getElementById('consentimiento').classList.remove("is-visible");
+    if (document.getElementById("consent_select").value == 1) {
+        document.getElementById("consent_select").setCustomValidity("");
+        document
+            .getElementById("consentimiento")
+            .classList.remove("is-visible");
         form.submit();
     } else {
-        alert(
-            "Debe aceptar la información básica para continuar con el registro."
-        );
+        window.alert("Debe aceptar el consentimiento para registrarse");
+        document
+            .getElementById("consent_select")
+            .setCustomValidity("Requiere aceptar");
     }
 
 }
