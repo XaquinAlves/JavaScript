@@ -27,21 +27,28 @@ function validar() {
     );
     //Comprobamos el telefono
     validarTelef(document.getElementById("input_telef"));
-    document.getElementById("consent").setCustomValidity("Debe aceptar el formulario");
     //Si pasa todas las comprobaciones, mostramos el consentimiento
     if (document.getElementById('input_telef').validity.valid) {
         document.getElementById("consentimiento").classList.add("is-visible");
+        document.getElementById('conset').setCustomValidity("Debe aceptar o consentemento")
     }
 }
 
 //Para el boton de aceptar consentimiento
 function aceptarConsentimiento() {
     document.getElementById("consentimiento").classList.remove("is-visible");
-    form.submit();
+    if(document.getElementById('consent').value == 1) {
+        document.getElementById("conset").setCustomValidity("");
+        form.submit();
+    } else {
+        alert(
+            "Debe aceptar la información básica para continuar con el registro."
+        );
+    }
+
 }
 //Para el boton de rechazar consentimiento
 function rechazarConsentimiento() {
-    alert("Debe aceptar la información básica para continuar con el registro.");
     document.getElementById("consentimiento").classList.remove("is-visible");
 }
 

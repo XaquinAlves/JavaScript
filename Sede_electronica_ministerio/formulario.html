@@ -81,7 +81,6 @@
                 <i class="fa-solid fa-circle-info tooltip" id="tooltip_contact"></i>
             </div>
         </fieldset>
-        <input type="text" id="conset">
         <button type="submit" class="enviar" id="bttn-submit" onclick="validar()">Aceptar</button>
         <div class="modal" id="consentimiento">
             <pre>
@@ -124,8 +123,12 @@
 
                 Declaro que he leído la INFORMACIÓN BÁSICA referente a los derechos a ejercitar. Puede consultar la información adicional y detallada sobre protección de datos
                 en el enlace: <a href="https://sede.educacion.gob.es/registro-electronico/proteccion-datos">https://sede.educacion.gob.es/registro-electronico/proteccion-datos</a></pre>
-                <button type="button" onclick="aceptarConsentimiento()" class="acept">Aceptar</button>
-                <button type="button" onclick="rechazarConsentimiento()" class="reject">Rechazar</button>
+                <select name="consent" id="consent_select" required>
+                    <option value="">Por favor escoja</option>
+                    <option value="1">Acepto</option>
+                    <option value="0">Rechazo</option>
+                </select>
+                <button type="button" onclick="aceptarConsentimiento()" class="acept">Enviar</button>
         </div>
     </form>
 </body>
