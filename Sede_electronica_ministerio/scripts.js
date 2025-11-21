@@ -65,7 +65,9 @@ function validarFechaNacimiento(fecha) {
     //Calculamos la edad en años con la fecha de nacimiento dada
     let edad = Math.abs(new Date() - new Date(fecha.value)) / anoMilisegundos;
 
-    if (edad < 18) {
+    if (fecha.validity.valueMissing){
+        fecha.setCustomValidity("La fecha de nacimiento es obligatoria")
+    } else if (edad < 18) {
         fecha.setCustomValidity("Debe ser mayor de edad");
     } else {
         //Si es mayor de edad
@@ -173,7 +175,7 @@ function validarCorreo(correo, repeat) {
 function validarTelef(telef) {
     const telefonoPattern = /^(\+34|0034|34)?[ -]*(6|7|8|9)[ -]*([0-9][ -]*){8}$/;
 
-    if (telef.validation.valueMissing) {
+    if (telef.validity.valueMissing) {
         telef.setCustomValidity("El teléfono es obligatorio");
     } else if (!telefonoPattern.test(telef.value)) {
         //Si no cumple el patron, mostramos el error
