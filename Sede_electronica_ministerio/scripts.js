@@ -1,11 +1,7 @@
 const form = document.getElementById("formUsuario");
 
-form.addEventListener("sumbit", function (event) {
-    event.preventDefault();
-    document.getElementById("consentimiento").classList.add("is-visible");
-});
-
 function validar() {
+
     validarNombre(document.getElementById("input_nombre"));
     validarPrimerApellido(document.getElementById("input_apellido1"));
 
@@ -31,10 +27,10 @@ function validar() {
     );
     //Comprobamos el telefono
     validarTelef(document.getElementById("input_telef"));
-
+    document.getElementById("consent").setCustomValidity("Debe aceptar el formulario");
     //Si pasa todas las comprobaciones, mostramos el consentimiento
-    if (form.checkValidity()) {
-
+    if (document.getElementById('input_telef').validity.valid) {
+        document.getElementById("consentimiento").classList.add("is-visible");
     }
 }
 
