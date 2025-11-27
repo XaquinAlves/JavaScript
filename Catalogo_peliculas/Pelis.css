@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f9;
+}
+
+#catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Ancho mayor por la imagen */
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.pelicula-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #E50914; /* Color temático de películas */
+    
+    /* Usar Flexbox o Grid para alinear imagen e info */
+    display: flex; 
+    gap: 15px;
+}
+
+.pelicula-card .poster {
+    width: 100px; /* Tamaño fijo para la imagen */
+    height: 150px;
+    object-fit: cover; /* Asegura que la imagen se vea bien dentro del contenedor */
+    border-radius: 4px;
+}
+
+.pelicula-card .info {
+    flex-grow: 1;
+}
+
+.pelicula-card h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.2em;
+}
+
+.pelicula-card .plot {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 10px;
+}
