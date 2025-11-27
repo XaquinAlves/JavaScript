@@ -37,6 +37,16 @@ function mostrarPeliculas(peliculas) {
         primaryTitleYear.appendChild(primaryTitleText);
         divInfo.appendChild(primaryTitleYear);
 
+        let generos = document.createElement('h3')
+        let generosText = document.createTextNode("Géneros: ")
+        generos.appendChild(generosText);
+
+        let generosSpan = document.createElement('span');
+        let generosList = document.createTextNode(pelicula.genres.array.join(','));
+        generosSpan.appendChild(generosList);
+        generos.appendChild(generosSpan);
+        divInfo.appendChild(generos);
+
         let rating = document.createElement('h3')
         let ratingText = document.createTextNode(
             `Puntuación: ${pelicula.rating.aggregateRating}`
