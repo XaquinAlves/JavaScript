@@ -1,5 +1,5 @@
-async function obtenerDatosPeliculas() {
-    const API_URL = "https://api.imdbapi.dev/titles?types=MOVIE&startYear=2025";
+async function obtenerDatosPeliculas(year) {
+    const API_URL = `https://api.imdbapi.dev/titles?types=MOVIE&startYear=${year}`;
     try {
         const respuesta = await fetch(API_URL);
         if (!respuesta.ok) {
@@ -71,7 +71,7 @@ function mostrarPeliculas(peliculas) {
 }
 
 
-async function iniciarCatalogo() {
+async function iniciarCatalogo(year) {
     // [Implementar mensaje de carga, try...catch, y llamadas a las funciones]
     // ...
     const catalogo = document.getElementById("catalogo");
@@ -81,9 +81,14 @@ async function iniciarCatalogo() {
     catalogo.appendChild(cargando);
 
     try {
-        let peliculas = await obtenerDatosPeliculas();
+        let peliculas = await obtenerDatosPeliculas(year);
         mostrarPeliculas(peliculas);
     } catch (error) {
         console.error(error.message);
     }
 }
+
+document.getElementById('search-btn').addEventListener('click', function (event) {
+    let año = document.getElementById('year-selector');
+    iniciarCatalogo(año.value);
+});
