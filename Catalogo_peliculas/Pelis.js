@@ -1,3 +1,5 @@
+let todasLasPeliculas = [];
+
 async function obtenerDatosPeliculas(year) {
     const API_URL = `https://api.imdbapi.dev/titles?types=MOVIE&startYear=${year}`;
     try {
@@ -82,8 +84,8 @@ async function iniciarCatalogo(year) {
     catalogo.appendChild(cargando);
 
     try {
-        let peliculas = await obtenerDatosPeliculas(year);
-        mostrarPeliculas(peliculas);
+        todasLasPeliculas = await obtenerDatosPeliculas(year);
+        mostrarPeliculas(todasLasPeliculas);
     } catch (error) {
         console.error(error.message);
     }
@@ -94,4 +96,25 @@ document
     .addEventListener("click", function (event) {
         let año = document.getElementById("year-selector");
         iniciarCatalogo(año.value);
+    });
+
+function aplicarFiltros() {
+    let genero = document.getElementById('genre-filter');
+    let rating = document.getElementById('rating-filter');
+    peliculasFiltradas = todasLasPeliculas.filter(function (pelicula) {
+        if (pelicula.rating > rating.value && genre.value in pelicula.genres) {
+            return pelicula;
+        }
+    })
+    mostrarPeliculas(peliculasFiltradas);
+}
+
+document.getElementById('genre-filter').addEventListener('change', function (event) {
+    aplicarFiltros();
+});
+
+document
+    .getElementById("rating-filter")
+    .addEventListener("change", function (event) {
+        aplicarFiltros();
     });
