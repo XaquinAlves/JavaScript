@@ -32,7 +32,7 @@ function mostrarPeliculas(peliculas) {
 
         let primaryTitleYear = document.createElement('h3');
         let primaryTitleText = document.createTextNode(
-            pelicula.primaryTitle + `(${pelicula.startYear})`
+            pelicula.primaryTitle + ` (${pelicula.startYear})`
         );
         primaryTitleYear.appendChild(primaryTitleText);
         divInfo.appendChild(primaryTitleYear);
@@ -42,16 +42,21 @@ function mostrarPeliculas(peliculas) {
         generos.appendChild(generosText);
 
         let generosSpan = document.createElement('span');
-        let generosList = document.createTextNode(pelicula.genres.array.join(','));
+        let generosList = document.createTextNode(pelicula.genres.join(", "));
         generosSpan.appendChild(generosList);
         generos.appendChild(generosSpan);
         divInfo.appendChild(generos);
 
         let rating = document.createElement('h3')
-        let ratingText = document.createTextNode(
-            `Puntuación: ${pelicula.rating.aggregateRating}`
-        );
+        let ratingText = document.createTextNode(`Puntuación: `);
         rating.appendChild(ratingText);
+
+        let ratingSpan = document.createElement('span')
+        let ratingSpanText = document.createTextNode(
+            `⭐${pelicula.rating.aggregateRating}`
+        );
+        ratingSpan.appendChild(ratingSpanText);
+        rating.appendChild(ratingSpan);
         divInfo.appendChild(rating);
 
         let plot = document.createElement('p');
