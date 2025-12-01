@@ -99,6 +99,7 @@ document
         let año = document.getElementById("year-selector");
         iniciarCatalogo(año.value);
     });
+
 let genero = document.getElementById("genre-filter");
 
 genero.addEventListener("change", function (event) {
@@ -114,12 +115,12 @@ genero.addEventListener("change", function (event) {
         mostrarPeliculas(peliculasFiltradas);
     });
 
-document
-    .getElementById("rating-filter")
-    .addEventListener("change", function (event) {
-        let rating = document.getElementById("rating-filter");
+let rating = document.getElementById("rating-filter");
+
+rating.addEventListener("change", function (event) {
         let peliculasFiltradas = todasLasPeliculas.filter(function (pelicula) {
-            if (pelicula.rating > rating.value) {
+            console.log(pelicula.rating);
+            if (pelicula.rating['aggregateRating'] > rating.value) {
                 return pelicula;
             }
         });
