@@ -1,5 +1,6 @@
 let todasLasPeliculas = [];
 
+
 async function obtenerDatosPeliculas(year) {
     const API_URL = `https://api.imdbapi.dev/titles?types=MOVIE&startYear=${year}`;
     try {
@@ -9,6 +10,7 @@ async function obtenerDatosPeliculas(year) {
         }
 
         const resultado = await respuesta.json();
+        todasLasPeliculas = resultado["titles"];
         return resultado["titles"];
     } catch (error) {
         console.error(error.message);
@@ -49,7 +51,7 @@ function mostrarPeliculas(peliculas) {
         generos.appendChild(generosSpan);
         divInfo.appendChild(generos);
 
-        if ('rating' in pelicula) {
+        if ("rating" in pelicula) {
             let rating = document.createElement("h3");
             let ratingText = document.createTextNode(`Puntuación: `);
             rating.appendChild(ratingText);
@@ -97,24 +99,29 @@ document
         let año = document.getElementById("year-selector");
         iniciarCatalogo(año.value);
     });
+let genero = document.getElementById("genre-filter");
 
-function aplicarFiltros() {
-    let genero = document.getElementById('genre-filter');
-    let rating = document.getElementById('rating-filter');
-    peliculasFiltradas = todasLasPeliculas.filter(function (pelicula) {
-        if (pelicula.rating > rating.value && genre.value in pelicula.genres) {
-            return pelicula;
-        }
-    })
-    mostrarPeliculas(peliculasFiltradas);
-}
-
-document.getElementById('genre-filter').addEventListener('change', function (event) {
-    aplicarFiltros();
-});
+genero.addEventListener("change", function (event) {
+        let peliculasFiltradas = todasLasPeliculas.filter(function (pelicula) {
+            if (genero.value === "") {
+                return pelicula;
+            } else {
+                if (pelicula.genres.includes(genero.value)) {
+                    return pelicula;
+                }
+            }
+        });
+        mostrarPeliculas(peliculasFiltradas);
+    });
 
 document
     .getElementById("rating-filter")
     .addEventListener("change", function (event) {
-        aplicarFiltros();
+        let rating = document.getElementById("rating-filter");
+        let peliculasFiltradas = todasLasPeliculas.filter(function (pelicula) {
+            if (pelicula.rating > rating.value) {
+                return pelicula;
+            }
+        });
+        mostrarPeliculas(peliculasFiltradas);
     });
