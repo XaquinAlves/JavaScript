@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de bolsas de producto</title>
+</head>
+<body>
+    <form id="form_bolsas" style="margin: 5%;">
+        <fieldset action="" style="display: flex; flex-direction: column; gap: 20px;">
+            <legend>Datos de la bolsa</legend>
+            <div>
+                <label for="fec_creacion">Fecha de Creación: </label>
+                <input type="text" name="fec_creacion" id="fec_creacion" required placeholder="dd/mm/aaaa">
+            </div>
+            <div>
+                <label for="cocinero">Cocinero: </label>
+                <input type="text" name="cocinero" id="cocinero" required placeholder="WW$1234">
+            </div>
+            <div>
+                <label for="detinatario">Destinatario: </label>
+                <input type="text" name="destinatario" id="destinatario" placeholder="NM_albuquerque:1234">
+            </div>
+            <div>
+                <label for="gramos">Gramos: </label>
+                <input type="text" name="gramos" id="gramos" placeholder="200gC3OH7">
+            </div>
+            <div>
+                <label for="num_cuenta">Número de Cuenta Bancaria: </label>
+                <input type="text" name="num_cuenta" id="num_cuenta" placeholder="LLNN-NNNNNNNNNNNN-NN" style="width: 100%;">
+            </div>
+            <button type="submit" style="align-self: flex-end;" onclick="validar()">Enviar</button>
+        </fieldset>
+    </form>
+    <script src="./gestionBolsas.js"></script>
+</body>
+</html>
