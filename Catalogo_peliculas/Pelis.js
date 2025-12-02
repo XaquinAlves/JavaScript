@@ -119,8 +119,7 @@ let rating = document.getElementById("rating-filter");
 
 rating.addEventListener("change", function (event) {
         let peliculasFiltradas = todasLasPeliculas.filter(function (pelicula) {
-            console.log(pelicula.rating);
-            if (pelicula.rating['aggregateRating'] > rating.value) {
+            if ('rating' in pelicula && pelicula.rating['aggregateRating'] > rating.value) {
                 return pelicula;
             }
         });
