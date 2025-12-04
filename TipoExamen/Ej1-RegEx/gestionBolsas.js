@@ -4,8 +4,9 @@ function validar () {
     validarFecha(document.getElementById('fec_creacion'));
     validarNombreClave(document.getElementById('cocinero'));
     validarDestinatarios(document.getElementById('destinatario'));
-    validarGramos(document.getElementById('gramos'));
-}
+    validarGramos(document.getElementById("gramos"));
+    validarNumCuenta(document.getElementById('num_cuenta'));
+};
 
 function validarFecha(fecha) {
     const fechaPattern = /^(\d{2})\/(\d{2})\/(\d{4})$/;
@@ -94,5 +95,40 @@ function validarGramos(gramos) {
 }
 
 function validarNumCuenta(cuenta) {
-    const numCuentaPattern = /^([A-NO-Z]{2})(\d{2})$/
+    const numCuentaPattern =
+        /^(?<letra1>[A-NO-Z])(?<letra2>[A-NO-Z])(?<digitos>\d{2})\-(?<numcuenta1>\d{6})(?<numcuenta2>\d{6})\-(?<control1>\d)(?<control2>\d)$/;
+    const equivalenciaLetras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+    if (cuenta.value === '') {
+        cuenta.setCustomValidity('Campo obligatorio');
+    } else if (!numCuentaPattern.test(cuenta.value)) {
+        cuenta.setCustomValidity('Formato incorrecto');
+    } else {
+        const match = cuenta.value.match(numCuentaPattern);
+        let sumaLetras = equivalenciaLetras.indexOf(match.groups.letra1) + equivalenciaLetras.indexOf(match.groups.letra2) + 2;
+
+        let numcuenta1 = match.groups.numcuenta2.split("");
+        let numcuenta2 = match.groups.numcuenta2.split("");
+        let sumaCuenta1 = 0;
+        let sumaCuenta2 = 0;
+
+        for (let i = 0; i < numcuenta1.length; i++){
+            sumaCuenta1 += Number(numcuenta1[i]);
+        }
+
+        for (let i = 0; i < numcuenta2.length; i++) {
+            sumaCuenta2 += Number(numcuenta2[i]);
+        }
+
+        sumaCuenta1 = Math.trunc(sumaCuenta1 / 6);
+        sumaCuenta2 = Math.trunc(sumaCuenta2 / 6);
+
+        if (sumaLetras != Number(match.groups.digitos)) {
+            cuenta.setCustomValidity('Los dígitos no coinciden con las letras');
+        } else if (sumaCuenta1 != Number(match.groups.control1) || sumaCuenta2 != Number(match.groups.control2)) {
+            cuenta.setCustomValidity('Los dígitos de control no coinciden')
+        } else {
+            cuenta.setCustomValidity('')
+        }
+    }
 }
