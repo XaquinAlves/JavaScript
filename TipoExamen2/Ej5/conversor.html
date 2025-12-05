@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de grados</title>
+</head>
+<body>
+    <div id="container" style="margin: 5%;">
+        <div id="div-tipo">
+            <label for="tipo">Tipo de conversión: </label>
+            <select name="tipo" id="tipo">
+                <option value="0"> - </option>
+                <option value="1">Celsius a Fahrenheit</option>
+                <option value="2">Fahrenheit a Celsius</option>
+            </select>
+        </div>
+        <div id="div-conversion">
+            <p id="label-conversion"></p>
+            <input type="number" id="grados" name="grados" step="0.1" style="display: none;">
+            <button type="button" id="btn-convertir" style="display: none;" onclick="convert()">
+                Convertir
+            </button>
+        </div>
+        <p id="resultado"></p>
+    </div>
+    <script src="./conversor.js"></script>
+</body>
+</html>
