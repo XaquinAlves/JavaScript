@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor Celsius-Fahrenheit</title>
+</head>
+<body>
+    <fieldset style="margin: 5%;">
+        <form action="">
+            <label for="tipo">Tipo de conversión</label>
+            <select name="tipo" id="tipo">
+                <option value="1">Fahrenheit a Celsius</option>
+                <option value="2">Celsius a Fahrenheit</option>
+            </select> <br><br>
+            <label for="grados" id="labelGrados">Introduce los grados Fahrenheit: </label>
+            <input type="number" name="grados" id="grados" step="0.1" placeholder="Grados">
+            <button type="button" onclick="convertir()">Convertir</button>
+        </form>
+    </fieldset>
+    <div style="margin: 5%; padding: 15px;">
+        <p id="resultado"></p>
+    </div>
+    <script src="./grados.js"></script>
+</body>
+</html>
