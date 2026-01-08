@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Parte4</title>
+    </head>
+    <body>
+        <input type="text" id="texto" />
+        <button onclick="agregarFila()">Añadir fila</button>
+        <br />
+        <table>
+            <thead>
+                <tr>
+                    <th>Contenido</th>
+                    <th>Operación</th>
+                </tr>
+            </thead>
+            <tbody id="bodyTabla">
+                <tr>
+                    <td id="fila1">
+                        Cecilia me ha dicho que este es el texto a canificar
+                    </td>
+                    <td><button onclick="toCani('fila1')">Caniar</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <script src="./script.js"></script>
+    </body>
+</html>
