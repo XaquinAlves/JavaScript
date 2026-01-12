@@ -72,8 +72,11 @@ function buscarPorMoneda(array, moneda) {
 function capitalMasLarga(array) {
     return array.reduce((acc, actual, indice) => {
         if (actual.capital.length > acc.capital.length) {
+            return actual;
+        } else {
+            return acc;
         }
-    });
+    }).nombre;
 }
 
 console.log(contarPaises(PAISES));
