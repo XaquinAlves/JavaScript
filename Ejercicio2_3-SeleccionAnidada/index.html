@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Selección Anidada</title>
+    </head>
+    <body>
+        <form id="formulario-ubicacion">
+            <label for="select-provincia">Provincia:</label>
+            <select id="select-provincia">
+                <option value="" selected disabled>
+                    Selecciona una provincia
+                </option>
+            </select>
+
+            <label for="select-municipio">Municipio:</label>
+            <select id="select-municipio" disabled>
+                <option value="" selected disabled>
+                    Primero elige provincia
+                </option>
+            </select>
+
+            <div id="resultado-ine">
+                <p>Código INE: <span id="codigo-ine">-</span></p>
+            </div>
+        </form>
+        <script src="./bd.js"></script>
+    </body>
+</html>
