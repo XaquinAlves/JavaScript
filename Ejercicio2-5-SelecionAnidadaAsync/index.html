@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador INE - Aprendizaje JavaScript</title>
+</head>
+<body>
+    <h1>Buscador de Códigos INE</h1>
+
+    <label for="provincias">Provincia:</label>
+    <select id="provincias">
+        <option value="">Cargando provincias...</option>
+    </select>
+
+    <br><br>
+
+    <label for="municipios">Municipio:</label>
+    <select id="municipios" disabled>
+        <option value="">Selecciona primero una provincia</option>
+    </select>
+
+    <p>El código INE seleccionado es: <strong id="codigo-ine">-</strong></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
