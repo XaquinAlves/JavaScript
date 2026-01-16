@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador INE - Síncrono</title>
+</head>
+<body>
+    <body>
+    <h1>Códigos de provincias y municipios españoles</h1>
+    <p>Selección jerárquica de ubicación.</p>
+
+    <label>Provincia:</label>
+    <select id="provincias">
+        <option value="" selected disabled>Selecciona provincia</option>
+    </select>
+
+    <label>Municipio:</label>
+    <select id="municipios" disabled>
+        <option value="">Primero elige provincia</option>
+    </select>
+
+    <div style="margin-top: 20px;">
+        <strong>Código INE:</strong> <span id="codigo-ine">-</span>
+    </div>
+
+    <script src="provincias.js"></script>
+    <script src="municipios.js"></script>
+    <script src="script.js"></script>
+</body>
+</body>
+</html>
