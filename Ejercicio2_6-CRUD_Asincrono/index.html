@@ -4,11 +4,12 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>CRUD Asíncrono</title>
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="./style.css" />
     </head>
     <body>
         <h1>CRUD ASINCRONO</h1>
         <button type="button" onclick="fetchUsers()">Cargar usuarios</button>
+        <button type="button" id="abrirPost">Guardar Usuario</button>
         <table id="tabla-usuarios" border="1">
             <thead>
                 <tr>
@@ -16,10 +17,24 @@
                     <th>Correo Electrónico</th>
                 </tr>
             </thead>
-            <tbody id="usuarios-tbody">
-
-            </tbody>
+            <tbody id="usuarios-tbody"></tbody>
         </table>
+        <div id="modalPost" class="modal">
+            <div class="modal-content">
+                <span class="cerrar">&times;</span>
+                <form id="postUsuario" action="" method="post">
+                    <div>
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" name="nombre" id="nombre" />
+                    </div>
+                    <div>
+                        <label for="correo">Correo Electrónico:</label>
+                        <input type="email" name="correo" id="correo" />
+                    </div>
+                    <button type="submit">Guardar</button>
+                </form>
+            </div>
+        </div>
         <script src="./app.js"></script>
     </body>
 </html>
