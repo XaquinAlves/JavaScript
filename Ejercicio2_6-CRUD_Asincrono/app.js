@@ -9,18 +9,7 @@ async function fetchUsers() {
         const respuesta = await fetch(API_URL);
         const usuarios = await respuesta.json();
         vaciarTabla(tablaUsuarios, tbodyUsuarios);
-        usuarios.forEach((usuario) => {
-            let fila = document.createElement("tr");
-            let celdaNombre = document.createElement("td");
-            let celdaEmail = document.createElement("td");
-
-            celdaNombre.textContent = usuario.name;
-            celdaEmail.textContent = usuario.email;
-
-            fila.appendChild(celdaNombre);
-            fila.appendChild(celdaEmail);
-            tbodyUsuarios.appendChild(fila);
-        });
+        rellenarTablaUsuarios(usuarios);
         tablaUsuarios.style.display = "revert";
     } catch (error) {
         console.error("Error cargando usuarios: ", error.message);
@@ -40,7 +29,7 @@ async function createUser(data) {
                 address: data.address,
                 phone: data.phone,
                 website: data.website,
-                company: data.company
+                company: data.company,
             }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
@@ -57,21 +46,23 @@ async function deleteUser(id) {
     const options = {
         method: "DELETE",
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json; charset=UTF-8",
         },
     };
 
-    fetch(API_URL + `/${id}`, options).then(response => {
-        if (!response.ok) {
-            throw new Error("La respuesta de la red no fue correcta");
-        }
-        console.log("Recurso eliminado correctamente");
-    }).catch(error => {
-        console.error(
-            "Hubo un problema con la solicitud DELETE:",
-            error.message,
-        );
-    })
+    fetch(API_URL + `/${id}`, options)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("La respuesta de la red no fue correcta");
+            }
+            console.log("Recurso eliminado correctamente");
+        })
+        .catch((error) => {
+            console.error(
+                "Hubo un problema con la solicitud DELETE:",
+                error.message,
+            );
+        });
 }
 
 function vaciarTabla(tabla, tbody) {
@@ -79,6 +70,21 @@ function vaciarTabla(tabla, tbody) {
         tbody.removeChild(tbody.firstChild);
     }
     tabla.style.display = "none";
+}
+
+function rellenarTablaUsuarios(usuarios) {
+    usuarios.forEach((usuario) => {
+        let fila = document.createElement("tr");
+        let celdaNombre = document.createElement("td");
+        let celdaEmail = document.createElement("td");
+
+        celdaNombre.textContent = usuario.name;
+        celdaEmail.textContent = usuario.email;
+
+        fila.appendChild(celdaNombre);
+        fila.appendChild(celdaEmail);
+        tbodyUsuarios.appendChild(fila);
+    });
 }
 
 // Ventana modal
