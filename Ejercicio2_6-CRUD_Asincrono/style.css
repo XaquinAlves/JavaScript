@@ -1,0 +1,17 @@
+#tabla-usuarios {
+    border-collapse: collapse;
+    margin: 5%;
+    display: none;
+}
+    #tabla-usuarios th, #tabla-usuarios td {
+        padding: 15px;
+    }
+
+button {
+    padding: 5px;
+    margin-left: 5%;
+}
+
+h1 {
+    margin-left: 5%;
+}

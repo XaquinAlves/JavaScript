@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CRUD Asíncrono</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <h1>CRUD ASINCRONO</h1>
+        <button type="button" onclick="fetchUsers()">Cargar usuarios</button>
+        <table id="tabla-usuarios" border="1">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo Electrónico</th>
+                </tr>
+            </thead>
+            <tbody id="usuarios-tbody">
+
+            </tbody>
+        </table>
+        <script src="./app.js"></script>
+    </body>
+</html>
