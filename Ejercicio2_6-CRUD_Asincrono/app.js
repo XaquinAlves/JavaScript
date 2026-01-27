@@ -80,7 +80,7 @@ function rellenarTablaUsuarios(usuarios) {
             <td>${usuario.phone}</td>
             <td>
                 <button type="button" onclick="">Editar</button>
-                <button type="button" onclick="">Borrar</button>
+                <button type="button" onclick="deleteUser(${usuario.id})">Borrar</button>
             </td>`;
 
         tbodyUsuarios.appendChild(fila);
@@ -242,7 +242,7 @@ class UsuarioController {
 
 const controller = new UsuarioController(API_URL);
 
-controller.obtenerTodos();
+//controller.obtenerTodos();
 
 guardarUsuario = () => {
     id = document.getElementById("userId").value;
