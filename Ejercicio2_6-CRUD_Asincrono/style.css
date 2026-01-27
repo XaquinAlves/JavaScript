@@ -7,13 +7,15 @@
 #tabla-usuarios td {
     padding: 15px;
 }
+#tabla-usuarios button {
+    margin-right: 5px;
+}
 
 button {
     padding: 5px;
-    margin-left: 5%;
 }
 
-h1 {
+h1, h2, body > button {
     margin-left: 5%;
 }
 
