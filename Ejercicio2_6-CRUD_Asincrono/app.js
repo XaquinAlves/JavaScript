@@ -151,7 +151,7 @@ class UsuarioController {
 
     setUser(usuario) {
         if (usuario.id) {
-            this.ejecutarRequest(this.apiUrl + `/${usuario.id}`, "put");
+            this.ejecutarRequest(this.apiUrl + `/${usuario.id}`, "put", usuario);
         } else {
             this.ejecutarRequest(this.apiUrl, "post", usuario);
         }
