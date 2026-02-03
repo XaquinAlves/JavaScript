@@ -19,7 +19,7 @@ class PokemonController {
     }
 
     async init() {
-        const lista = await this.model.obtenerListado(150);
+        const lista = await this.model.obtenerListado(30);
         this.view.limpiarPantalla();
         for (const poke of lista) {
             const detalles = await this.model.obtenerPokemon(poke.name);
@@ -52,4 +52,3 @@ class PokemonController {
 }
 
 const app = new PokemonController(new PokemonModel(), new PokemonView());
-app.init()
