@@ -8,9 +8,9 @@
     </head>
     <body>
         <h1>CRUD ASINCRONO</h1>
-        <button type="button" id="abrirPost">Insertar Usuario</button>
+        <button type="button" id="btn-insertar">Insertar Usuario</button>
         <h2>Lista de Usuarios</h2>
-        <button type="button" onclick="fetchUsers()" id="boton-cargar">Cargar usuarios</button>
+        <button type="button" id="btn-cargar">Cargar usuarios</button>
         <table id="tabla-usuarios" border="1">
             <thead>
                 <tr>
@@ -27,7 +27,7 @@
         <div id="modal-usuario" class="modal">
             <div class="modal-content">
                 <span class="cerrar">&times;</span>
-                <form id="postUsuario" action="" method="post">
+                <form id="postUsuario">
                     <input type="hidden" name="userId" id="userId">
                     <div>
                         <label for="username">Nombre de Usuario:</label>
@@ -45,7 +45,7 @@
                         <label for="telef">Teléfono:</label>
                         <input type="tel" name="telef" id="telef" />
                     </div>
-                    <button type="submit">Guardar</button>
+                    <button type="button" id="btn-guardar">Guardar</button>
                 </form>
             </div>
         </div>
